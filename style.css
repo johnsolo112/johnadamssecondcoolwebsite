@@ -1,0 +1,140 @@
+/* generic declarations, independent of page format */
+
+@import url('https://fonts.googleapis.com/css2?family=Bitter&display=swap');
+
+:root {
+    --text: black;
+    --bg: white;
+    --dots: #f0f0f0;
+    --accent: #395ea3;
+    --accent-br: #6d8ae0;
+    --bq-text: #404040;
+    --bq-line: #bbbbbb;
+    --sb: #bbbbbb;
+    --sel: #a9b8fc;
+}
+
+@media only screen and (prefers-color-scheme: dark) {
+    :root {
+        --text: #cccccc;
+        --bg: black;
+        --dots: #808080;
+        --accent: #ffddaa;
+        --accent-br: white;
+        --bq-text: #606060;
+        --bq-line: #202020;
+        --sb: #202020;
+        --sel: #eab669;
+    }
+    a {
+        text-decoration: none;
+    }
+}
+
+html {
+    color: var(--text);
+    background-color: var(--bg);
+    line-height: 1.4;
+    font-size: 1em;
+    font-family: 'Arial', sans-serif;
+}
+
+header, body, footer {
+    padding: 0 16px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+body {
+    margin: 0 auto 2.5em auto;
+}
+
+footer {
+    margin: 10em auto 1em auto;
+    text-align: center;
+}
+
+a:link, a:visited, a:focus {
+    color: var(--accent);
+}
+
+a:hover, a:active {
+    color: var(--accent-br);
+}
+
+ul {
+    padding: 0 20px 0 20px;
+    margin: 8px 0 8px 0;
+}
+
+ul li {
+    list-style: none;
+    position: relative;
+}
+
+ul li::before {
+    content: '•';
+    margin-left: -14px;
+    position: absolute;
+}
+
+q, blockquote {
+    font-style: italic;
+    color: var(--bq-text);
+}
+
+blockquote {
+    margin-left: 3px;
+    padding-left: 1em;
+    display: block;
+    border-left: 1px solid var(--bq-line);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 18px 0 0 0;
+    font-family: "Bitter", sans-serif;
+}
+
+h1:hover::after, h2:hover::after, h3:hover::after, h4:hover::after, h5:hover::after, h6:hover::after {
+    content: '#';
+}
+
+h4, h5, h6 {
+    font-size: 1em;
+}
+
+hr {
+    width: 90%;
+    color: var(--sb);
+}
+
+.no-selection {
+    -webkit-touch-callout:none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media print {
+    body {
+        min-width: none;
+        max-width: 90%;
+        margin: auto;
+    }
+    blockquote {
+        border-left: 2px solid var(--bq-line);
+    }
+    footer {
+        display: none;
+    }
+}
+
+/* browser-specific settings, no need to change */
+* { scrollbar-width: thin; scrollbar-color: var(--sb) var(--bg); }
+::-moz-selection, ::selection { background-color: var(--sel); color: black; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background-color: var(--bg); }
+::-webkit-scrollbar-thumb { background-color: var(--sb); }
+::-webkit-scrollbar-thumb:hover { background-color: #979797; }
